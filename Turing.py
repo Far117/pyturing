@@ -1,6 +1,6 @@
 import sys,time
 
-class CommandError():
+class CommandError(): #For custom errors
 
     def __init__(self,inp,exp):
         print("Invalid input, "+inp)
@@ -9,25 +9,27 @@ class CommandError():
         sys.exit()
 
 
-class TuringMachine():
+class TuringMachine(): #Main code
 
     def __init__(self,tl):
         self.tapeLength=tl
 
-        self.pos=int(self.tapeLength/2)
+        self.pos=int(self.tapeLength/2) #Starting position is in the middle
         self.blank="="
         self.zero="0"
         self.one="1"
         self.head="V"
-        self.tape=[]
-        self.rightLimit=self.tapeLength-2
+        self.tape=[] #The tape is an array
+        self.rightLimit=self.tapeLength-2 #Might be needed, limits movement
+                                            #to an extent
 
-        for x in range(self.tapeLength):
+        for x in range(self.tapeLength): #Makes the entire tape blank
             self.tape.append(self.blank)
 
         self.printTape()
 
-    def printTape(self):
+    def printTape(self): #The long complicated, headache of a printing
+                            #function. Prints dynamically (Hopefully)
         tmpTape=""
         machine=""
 
@@ -77,7 +79,7 @@ class TuringMachine():
         machine=""
         tmpTape=""
 
-    def move(self,d):
+    def move(self,d):#Self explanitory
         if d=="r":
             self.pos+=1
         elif d=="l":
@@ -89,11 +91,11 @@ class TuringMachine():
         self.printTape()
         time.sleep(1)
 
-    def read(self):
+    def read(self):#Self explanitory
         return self.tape[self.pos]
         time.sleep(.5)
 
-    def write(self,bit):
+    def write(self,bit):#Self explanitory
         if bit==self.one:
             self.tape[self.pos]=self.one
         elif bit==self.zero:
@@ -109,18 +111,19 @@ class TuringMachine():
 
         self.printTape()
 
-    def erase(self):
+    def erase(self):#Self explanitory
         self.tape[self.pos]=self.blank
         time.sleep(.7)
         self.printTape()
 
-    def eraseAll(self):
+    def eraseAll(self):#Self explanitory, no, wait, actually, this erases
+                        #nope, actually, it is self explanitory ;D
         while self.pos!=0:
             self.move("l")
         for x in range(self.rightLimit):
             self.erase()
             self.move("r")
-    def initialize(self,numbers):
+    def initialize(self,numbers): #Prints the starting sequence onto the tape
         n=list(numbers)
         for x in n:
             if str(x)!=self.zero and str(x)!=self.one and str(x)!=self.blank:
@@ -131,7 +134,7 @@ class TuringMachine():
                 self.write(str(x))
             self.move("r")
         self.printTape()
-    def done(self):
+    def done(self): #A way to pause before quitting
         self.printTape()
         print("Program complete!")
         input("Press enter to see whole tape...")
@@ -140,10 +143,11 @@ class TuringMachine():
             self.save(input("Name your file: "))
 
         sys.exit()
-    def finalPrint(self):
+    def finalPrint(self): #Prints the ENTIRE tape onto the screen
         for x in self.tape:
             print(str(x),end='')
-    def save(self, name):
+
+    def save(self, name):#Saves the ENTIRE tape to whatever file ya want
         print("Saving...")
         f=open(name+".txt","w")
         fil=""
@@ -157,41 +161,3 @@ class TuringMachine():
         f.close()
         print("Save complete!")
         input("Press enter to continue...")
-
-
-
-
-
-
-
-
-        '''
-        if self.tapeLength<=20:
-            for x in range(len(self.tape)-1):
-                tmpTape=tmpTape+str(self.tape[x])
-                if x==self.pos:
-                    machine=machine+self.head
-                else:
-                    machine=machine+" "
-        elif self.pos<=20:
-            for x in range(20):
-                tmpTape=tmpTape+str(self.tape[x])
-            if x==self.pos:
-                machine=machine+self.head
-            else:
-                machine=machine+" "
-        elif self.pos>=self.tapeLength-20:
-            for x in range(20):
-                tmpTape=tmpTape+str(self.tape[self.tapeLength-x])
-            if self.tapeLength-x==self.pos:
-                machine=machine+self.head
-            else:
-                machine=machine+" "
-        else:
-            for x in range(20):
-                tmpTape=tmpTape+str(self.tape[self.pos-x+10])
-                if self.pos-x+10==self.pos:
-                    machine=machine+self.head
-                else:
-                    machine=machine+" "
-        '''

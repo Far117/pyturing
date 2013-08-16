@@ -1,0 +1,126 @@
+This is a Turing Machine written in Python, and can be programmed in Python.
+
+If you don't know what this is, then go here: http://en.wikipedia.org/wiki/Turing_machine
+Make sure you read the informal description. The formal one will make you say "Ain't nobody got time fo this".
+
+After reading this, you'll understand that this isn't really an accurate Turing Machine emulator.
+In fact, based on definition, this isn't really a Turing Machine at all. Anyway, It's fun (or at least interesting),
+and you can program it in Python! Yaaaaaaaaaaaay or something along those lines...
+
+
+How to use this:
+
+NOTE: If you read the source, you might understand it, but in case not, here's an overview:
+NOTE 2: See the included example for an even better idea, study the source for the best (maybe) idea
+
+First, you want to make a new module. Then, import Turing.py.
+
+To create a new Turing Machine, run [insert name here]=Turing.TuringMachine([Number of cells in tape]).
+Always aim for above what you need for your tape, just in case. Try to go for above 20, it acts weird
+at lower numbers, and it won't hurt.
+
+
+--------------------------------------------------------------------
+
+
+Customizations:
+
+NOTE:
+machine stands for whatever your instance of the TuringMachine class is called.
+1, 0, and blank stand for the internal names. They can be customized,
+for example, to 2,%,and *
+
+These can be edited via "machine.[variable]=[whatever you want]
+
+Format:
+	variable[DEFAULT]
+
+one[1]
+zero[0]
+blank[=]
+head[V]
+
+NOTE: Only make those one character long! 2 or more will break the Turing Machine!
+
+
+-----------------------------------------------------------------------
+
+
+Functions you may/will need (use them through [your variable].[function]([parameters]):
+
+Format:
+	function(parameters)
+
+	:Explanation
+
+	::Example
+
+
+initialize([string of 1's/0's/blanks])
+
+:An important function, adds starting data to your tape
+
+::machine.initialize("10101101010101010")
+
+
+
+printTape([N/A])
+
+:Not really needed, as most functions which change the way the tape looks automatically do this.
+It prints a section of the tape 20 cells long with the head above it in the relevant position.
+
+::printTape()
+
+
+
+move([string stating either left or right])
+
+:Very important, this moves the head one cell left or right. Has a one second delay for realism.
+
+::move('l')     or      move('r')
+
+
+
+read([N/A])
+
+:Also very important. This is your only way to see what is on the tape.
+It returns what is on the current position of the tape relative to the head.
+
+::random_variable=machine.read()
+
+
+
+write([bit])
+
+:Another very, very important function. It writes either a 1, 0, or blank (an erase is better though)
+to the current position.
+
+::machine.write('1')
+
+
+
+erase([N/A])
+
+:Replaces whatever is on the current position of the tape with a blank
+
+::machine.erase()
+
+
+
+eraseAll([N/A])
+
+:Completely erases everything on the tape. This may take a while for very long
+tapes (~1.6 seconds per cell)
+
+::machine.eraseAll()
+
+
+
+done(N/A)
+
+:Extremely important. You need to call this at the end of your
+program or else you won't be able to see final results or
+save your results. For certain, extreme Turing programs, this could
+means hours, even days of work LOST! DON'T FORGET!
+
+::machine.done()
