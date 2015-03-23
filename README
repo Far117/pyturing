@@ -1,23 +1,19 @@
-This is a Turing Machine written in Python, and can be programmed in Python.
+This is a Turing Machine (http://en.wikipedia.org/wiki/Turing_machine) written in Python, and can be programmed in Python.
 
-If you don't know what this is, then go here: http://en.wikipedia.org/wiki/Turing_machine
-Make sure you read the informal description. The formal one will make you say "Ain't nobody got time fo this".
 
-After reading this, you'll understand that this isn't really an accurate Turing Machine emulator.
+This isn't really an accurate Turing Machine emulator.
 In fact, based on definition, this isn't really a Turing Machine at all. Anyway, It's fun (or at least interesting),
-and you can program it in Python! Yaaaaaaaaaaaay or something along those lines...
+and you can program it in Python.
 
 
 How to use this:
 
-NOTE: If you read the source, you might understand it, but in case not, here's an overview:
-NOTE 2: See the included example for an even better idea, study the source for the best (maybe) idea
+NOTE: The source should be self explanitory, and there is an included example file to clear any confusions
 
 First, you want to make a new module. Then, import Turing.py.
 
-To create a new Turing Machine, run [insert name here]=Turing.TuringMachine([Number of cells in tape]).
-Always aim for above what you need for your tape, just in case. Try to go for above 20, it acts weird
-at lower numbers, and it won't hurt.
+To create a new Turing Machine, run variable=Turing.TuringMachine([Number of cells in tape]).
+The number of cells should be well above what you need, and there are bugs when it is lower than 20
 
 
 --------------------------------------------------------------------
@@ -40,13 +36,13 @@ zero[0]
 blank[=]
 head[V]
 
-NOTE: Only make those one character long! 2 or more will break the Turing Machine!
+NOTE: Only make those one character long!
 
 
 -----------------------------------------------------------------------
 
 
-Functions you may/will need (use them through [your variable].[function]([parameters]):
+Functions you may/will need (use them through variable.[function]([parameters]):
 
 Format:
 	function(parameters)
@@ -73,7 +69,7 @@ It prints a section of the tape 20 cells long with the head above it in the rele
 
 
 
-move([string stating either left or right])
+move(['l' || 'r'])
 
 :Very important, this moves the head one cell left or right. Has a one second delay for realism.
 
@@ -92,10 +88,10 @@ It returns what is on the current position of the tape relative to the head.
 
 write([bit])
 
-:Another very, very important function. It writes either a 1, 0, or blank (an erase is better though)
+:Another very, very important function. It writes either a 1, 0, or blank
 to the current position.
 
-::machine.write('1')
+::machine.write('1') || machine.write(' ')
 
 
 
