@@ -116,7 +116,6 @@ done(N/A)
 
 :Extremely important. You need to call this at the end of your
 program or else you won't be able to see final results or
-save your results. For certain, extreme Turing programs, this could
-means hours, even days of work LOST! DON'T FORGET!
+save your results.
 
 ::machine.done()
