@@ -1,19 +1,14 @@
-This is a Turing Machine (http://en.wikipedia.org/wiki/Turing_machine) written in Python, and can be programmed in Python.
+This is a Turing Machine (http://en.wikipedia.org/wiki/Turing_machine) library, written in Python.
 
 
-This isn't really an accurate Turing Machine emulator.
-In fact, based on definition, this isn't really a Turing Machine at all. Anyway, It's fun (or at least interesting),
-and you can program it in Python.
+This isn't really an accurate Turing Machine emulator. In fact, based on definition, this isn't really a Turing Machine at all. It was, however, an interesting little project for younger me to play with.
 
+Instructions:
 
-How to use this:
-
-NOTE: The source should be self explanitory, and there is an included example file to clear any confusions
-
-First, you want to make a new module. Then, import Turing.py.
+NOTE: Besides overviewing the source (the ultimate docs), there is an example file included to demonstrate all functionality.
 
 To create a new Turing Machine, run variable=Turing.TuringMachine([Number of cells in tape]).
-The number of cells should be well above what you need, and there are bugs when it is lower than 20
+The number of cells is glitchy when under 20. I had never gotten around to fixing this.
 
 
 --------------------------------------------------------------------
@@ -22,11 +17,10 @@ The number of cells should be well above what you need, and there are bugs when 
 Customizations:
 
 NOTE:
-machine stands for whatever your instance of the TuringMachine class is called.
-1, 0, and blank stand for the internal names. They can be customized,
-for example, to 2,%,and *
+"machine" stands for the name given to the instantiation of the TuringMachine class.
+1, 0, and blank stand for the internal names. They can be customized.
 
-These can be edited via "machine.[variable]=[whatever you want]
+These can be edited via "machine.[variable]=[whatever you want]"
 
 Format:
 	variable[DEFAULT]
@@ -36,15 +30,11 @@ zero[0]
 blank[=]
 head[V]
 
-NOTE: Only make those one character long!
-
-
 -----------------------------------------------------------------------
 
 
-Functions you may/will need (use them through variable.[function]([parameters]):
+Documentation format:
 
-Format:
 	function(parameters)
 
 	:Explanation
@@ -62,7 +52,7 @@ initialize([string of 1's/0's/blanks])
 
 printTape([N/A])
 
-:Not really needed, as most functions which change the way the tape looks automatically do this.
+:Most functions which change the way the tape looks automatically call this.
 It prints a section of the tape 20 cells long with the head above it in the relevant position.
 
 ::printTape()
@@ -71,7 +61,7 @@ It prints a section of the tape 20 cells long with the head above it in the rele
 
 move(['l' || 'r'])
 
-:Very important, this moves the head one cell left or right. Has a one second delay for realism.
+:Moves the head one cell left or right. Has a one second delay for realism.
 
 ::move('l')     or      move('r')
 
@@ -79,8 +69,7 @@ move(['l' || 'r'])
 
 read([N/A])
 
-:Also very important. This is your only way to see what is on the tape.
-It returns what is on the current position of the tape relative to the head.
+:This is your only way to see what is on the tape. It returns what is on the current position of the tape relative to the head.
 
 ::random_variable=machine.read()
 
@@ -88,10 +77,9 @@ It returns what is on the current position of the tape relative to the head.
 
 write([bit])
 
-:Another very, very important function. It writes either a 1, 0, or blank
-to the current position.
+:It writes either a 1, 0, or blank to the current position.
 
-::machine.write('1') || machine.write(' ')
+::machine.write('1')
 
 
 
@@ -114,7 +102,7 @@ tapes (~1.6 seconds per cell)
 
 done(N/A)
 
-:Extremely important. You need to call this at the end of your
+:You need to call this at the end of your
 program or else you won't be able to see final results or
 save your results.
 
